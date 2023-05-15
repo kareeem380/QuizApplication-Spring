@@ -21,11 +21,12 @@ public class Score {
 
 
 
-    public Score(Long id_Score, Long id_Quiz, Long id_Student, int score) {
+
+    public Score(Long id_Score, Long id_Quiz, Long id_Student) {
        this.id_Quiz=id_Quiz;
        this.id_Score=id_Score;
        this.id_Student=id_Student;
-       this.score=score;
+       this.score=100;
 
     }
     public Score(){

@@ -21,15 +21,18 @@ public class Student {
     private int age;
     @Column(name = "level")
     private int level;
+    @Column(name = "groupid")
+    private int groupid;
 
 
 
-    public Student(String name, String lastName,int level, int age,String role) {
+    public Student(String name, String lastName,int level, int age,String role, int groupid) {
         this.name = name;
         this.lname = lastName;
         this.role=role;
         this.level = level;
         this.age = age;
+        this.groupid=groupid;
 
     }
     public Student(){
@@ -81,5 +84,13 @@ public class Student {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public int getGroupid() {
+        return groupid;
+    }
+
+    public void setGroupid(int groupid) {
+        this.groupid = groupid;
     }
 }
