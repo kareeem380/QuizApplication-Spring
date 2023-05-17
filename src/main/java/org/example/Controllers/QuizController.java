@@ -5,9 +5,11 @@ import org.example.Repositories.QuestionRepository;
 import org.example.Repositories.QuizRepository;
 import org.example.Services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class QuizController implements QuizService {
@@ -28,16 +30,24 @@ public class QuizController implements QuizService {
         repositry.deleteById(Id);
     }
 
-    @GetMapping("/quiz/{id}")
+    /*@GetMapping("/quiz/{id}")
     public Quiz getQuiz(Long Id) {
         return repositry.findById(Id).orElse(null);
-    }
+    }*/
 
     @GetMapping("/quizs")
     public List<Quiz> getAllQuizs() {
         return repositry.findAll();
     }
 
+    @GetMapping("/quizzs/{id}")
+    public ResponseEntity<Quiz> getQuiz(@PathVariable(value = "id") Long id) {
+        System.out.println(id);
+        Optional<Quiz> quiz = repositry.findByIdWithQuestions(id);
+        System.out.println(quiz.toString());
+            return ResponseEntity.ok().body(quiz.get());
+
+    }
     @DeleteMapping("/quiz")
     public void deleteAllQuizs() {
         repositry.deleteAll();

@@ -3,6 +3,9 @@ package org.example.Entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Quiz {
 
@@ -12,20 +15,22 @@ public class Quiz {
     private Long id_Quiz;
     @Column(name = "name")
     private String name;
-    @Column(name="questionsId")
-    private Long questionsId;
     @Column(name="id_Professor")
     private Long id_Professor;
     @Column(name="groupid")
     private Long groupid;
+    @OneToMany(mappedBy = "quiz")
+    private List<Question> questions = new ArrayList<>();
 
+    @OneToOne(mappedBy = "quiz")
+    private Score score;
 
-    public Quiz( String name, Long questionsId, Long id_Professor, Long groupid) {
-
+    public Quiz(Long id_Quiz, String name, Long id_Professor, Long groupid, List<Question> questions) {
+        this.id_Quiz = id_Quiz;
         this.name = name;
-        this.questionsId = questionsId;
         this.id_Professor = id_Professor;
         this.groupid = groupid;
+        this.questions = questions;
     }
 
     public Quiz(){
@@ -45,13 +50,6 @@ public class Quiz {
         this.name = name;
     }
 
-    public Long getQuestionsId() {
-        return questionsId;
-    }
-
-    public void setQuestionsId(Long questionsId) {
-        this.questionsId = questionsId;
-    }
 
     public Long getId_Professor() {
         return id_Professor;

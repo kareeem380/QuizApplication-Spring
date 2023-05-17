@@ -23,7 +23,8 @@ public class Student {
     private int level;
     @Column(name = "groupid")
     private int groupid;
-
+    @OneToOne(mappedBy = "student")
+    private Score score;
 
 
     public Student(String name, String lastName,int level, int age,String role, int groupid) {

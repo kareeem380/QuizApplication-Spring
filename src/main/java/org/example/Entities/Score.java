@@ -10,24 +10,24 @@ public class Score {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_Score")
     private Long id_Score;
-    @Column(name = "id_Quiz")
-    private Long id_Quiz;
-
-    @Column(name = "id_Student")
-    private Long id_Student;
     @Column(name = "score")
     private int score;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_Quiz", referencedColumnName = "id_Quiz")
+    private Quiz quiz;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_Student", referencedColumnName = "id_Student")
+    private Student student;
 
 
 
 
-
-    public Score(Long id_Score, Long id_Quiz, Long id_Student) {
-       this.id_Quiz=id_Quiz;
+    public Score(Long id_Score, Student student, Quiz quiz) {
+       this.student=student;
+       this.quiz=quiz;
        this.id_Score=id_Score;
-       this.id_Student=id_Student;
        this.score=100;
-
     }
     public Score(){
 
@@ -37,20 +37,24 @@ public class Score {
         return id_Score;
     }
 
-    public Long getId_Quiz() {
-        return id_Quiz;
+    public void setId_Score(Long id_Score) {
+        this.id_Score = id_Score;
     }
 
-    public void setId_Quiz(Long id_Quiz) {
-        this.id_Quiz = id_Quiz;
+    public Quiz getQuiz() {
+        return quiz;
     }
 
-    public Long getId_Student() {
-        return id_Student;
+    public void setQuiz(Quiz quiz) {
+        this.quiz = quiz;
     }
 
-    public void setId_Student(Long id_Student) {
-        this.id_Student = id_Student;
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     public int getScore() {
