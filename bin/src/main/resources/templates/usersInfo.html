@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html 	xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<title> Spring Quiz - Users info</title>
+</head>
+<body>
+	<header 
+		th:replace="~{fragments/HeaderAndFooter :: header}">
+	</header>
+	<nav
+	 	th:replace="~{fragments/Navigation :: topBar}" >
+	</nav>
+	<div class="w3-container w3-center w3-padding-large">
+		<h2> Users info </h2>
+	</div>
+	<div class="w3-container w3-center">
+	<table class ="w3-table w3-bordered w3-centered">
+	 	<thead>
+	 		<tr> 
+	 			<th>Username</th>
+	 			<th>First name</th>
+	 			<th>Last name</th>
+	 			<th>Email</th>
+	 			<th>Account</th>
+	 			<th>Last logged in</th>
+	 		</tr>
+	 	</thead>
+	 	<tbody>
+	 		<tr th:each="u : ${users}" >
+	 			<td th:text="${u.username}"></td>
+	 			<td th:text="${u.firstName}"></td>
+	 			<td th:text="${u.lastName}"></td>
+	 			<td th:text="${u.email}"></td>
+	 			<td th:text="${u.role.displayValue}"></td>
+	 			<td th:text="${u.lastActive}"></td>
+	 		</tr>
+	 	</tbody>
+	 </table>
+	 </div>
+	 <footer
+		th:replace="~{fragments/HeaderAndFooter :: footer}">
+	</footer>
+</body>
+</html>

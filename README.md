@@ -1,9 +1,17 @@
-# QuizApplication-Spring
+# SpringQuiz
 
-The Quiz Application using SpringBoot and JSP JSTL is a web-based platform designed to facilitate quizzes for both students and professors.
+SpringQuiz is Demo Quiz web app. 
 
-Students would use the platform to take quizzes, track their performance, and view their progress over time. Professors, on the other hand, would use the platform to create and manage quizzes, as well as monitor their students' performance.
+After registering, the user is able to answer questions. At the end of the quiz, the user is presented with a score.  
+A user with appropriate account is able to add and delete questions and see user info and stats about the quiz.
 
-The application likely includes a user authentication system to ensure that only authorized users (i.e., students and professors) can access the quizzes and related data. Professors would have the ability to create new quizzes, assign them to specific classes or groups of students, and track their students' progress on the quizzes. Students would be able to take quizzes, view their scores, and track their progress over time.
+The intent of this project is to explore using Spring with focus on Spring Data and other technologies.
 
-Overall, the Quiz Application using SpringBoot and JSP JSTL sounds like a valuable tool for both students and professors, providing a convenient and efficient way to create, manage, and take quizzes online.
+The project is made with the help of Spring Boot, Spring Web MVC, Spring Security, Spring Data JPA, MySQL and Project Lombok  
+and on the front-end side with Thymeleaf and W3.CSS.
+
+The project is now updated to Spring Boot 3.
+
+When running locally you will need to edit application.properties or configure environmental variables. You will need to change DDL settings.
+
+Feel free to contact me about any question, suggestion etc.
