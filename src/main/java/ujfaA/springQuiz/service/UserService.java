@@ -18,40 +18,47 @@ import ujfaA.springQuiz.repository.UserRepository;
 @Service
 @Transactional
 public class UserService {
-	
+
 	@Autowired
 	private UserRepository userRepo;
-	
+
 	@Autowired
     private PasswordEncoder bCryptPasswordEncoder;
-	
+
 	public boolean usernameIsAvaible(String username) {
 		return ( ! userRepo.existsUserByUsername(username));
 	}
-	
+
 	public boolean emailIsAvaible(String email) {
 		return ( ! userRepo.existsUserByEmail(email));
 	}
-	
+
+
+
+
+
+
+
+
 	public User getUser(String username) {
 		return userRepo.findByUsername(username).orElseThrow();
 	}
-	
+
 	public User register(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setRole(Role.ADMINISTRATOR );
 		System.out.println(user.getRole());
 		return userRepo.save(user);
 	}
-	
+
 	public User update(User user) {
 		return userRepo.save(user);
 	}
-	
+
 	public Set<UserDTO> getUsersInfo() {
 		return userRepo.getUsersInfo();
 	}
-	
+
 	public void deleteUser(User user) {
 		userRepo.delete(user);
 	}
@@ -69,17 +76,17 @@ public class UserService {
 		else
 			return userRepo.getUsernamesThatAnsweredEveryQuestion();
 	}
-	
+
 	public int getScore(String username) {
 		return userRepo.countCorrectAnswers(username);
 	}
-	
+
 	public void removeFromUsersAnswers(long questionId) {
 		userRepo.removeFromUsersAnswers(questionId);
 	}
 
 	public Float getAnsweredPercentage(long questionId) {
-		
+
 		List<Integer> ansCount = userRepo.answersChosenCount(questionId);
 		int totalAnswers = 0;
 			for (Integer i : ansCount) {
@@ -91,9 +98,9 @@ public class UserService {
 		else
 			return -1.0f;
 	}
-	
+
 	public List<Float> getAnswersDistribution(long questionId) {
-		
+
 		 List<Integer> ansCount = userRepo.answersChosenCount(questionId);
 		 int totalAnswers = 0;
 		 for (Integer i : ansCount) {
