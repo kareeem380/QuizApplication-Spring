@@ -11,7 +11,6 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
-import ujfaA.springQuiz.model.converter.RoleConventer;
 import ujfaA.springQuiz.model.validator.ValidName;
 import ujfaA.springQuiz.model.validator.ValidPassword;
 
@@ -53,9 +52,8 @@ public class User {
 	private String lastName;	
 
 	private LocalDateTime lastActive;
-	
-	@Convert(converter = RoleConventer.class)
-	@Column(length = 4, nullable = false)
+
+	@Column(nullable = false)
 	private Role role;
 
 	@ElementCollection(fetch = FetchType.LAZY)

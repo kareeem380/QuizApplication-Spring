@@ -15,11 +15,11 @@ public class WebSecurityConfig {
 	
 	@Autowired
     private LoginSuccessHandler loginSuccessHandler;
-	
+
 	@Bean
 	public RoleHierarchy roleHierarchy(){
 		var roleHierarchy = new RoleHierarchyImpl();
-		roleHierarchy.setHierarchy( "ROLE_ADMINISTRATOR > ROLE_MODERATOR > ROLE_CONTRIBUTOR > ROLE_USER" );
+		roleHierarchy.setHierarchy( "ROLE_ADMINISTRATOR > ROLE_PROFESSOR  > ROLE_USER" );
 		return roleHierarchy;
 	}
 
@@ -35,10 +35,8 @@ public class WebSecurityConfig {
 				.permitAll()
 			.requestMatchers("/","/home", "/quiz/**")
 				.authenticated()
-			.requestMatchers("/questions/byMe", "/questions/new","/questions/{qId:[0-9]+}", "/questions/delete")
-				.hasRole(Role.CONTRIBUTOR.name())
 			.requestMatchers("/questions", "/users/usersEng")
-				.hasRole(Role.MODERATOR.name())
+				.hasRole(Role.PROFESSOR.name())
 			.anyRequest()
 				.hasRole(Role.ADMINISTRATOR.name())
 		.and()

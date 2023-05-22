@@ -14,11 +14,13 @@
 	<name>SpringQuiz</name>
 	<description>SpringQuiz web app</description>
 
-	<properties>
-		<java.version>19</java.version>
-		<spring.version>6.0.4</spring.version>
-		<spring-security.version>6.1.0-M1</spring-security.version>
-	</properties>
+    <properties>
+        <java.version>19</java.version>
+        <spring.version>6.0.4</spring.version>
+        <spring-security.version>6.1.0-M1</spring-security.version>
+        <maven.compiler.source>19</maven.compiler.source>
+        <maven.compiler.target>19</maven.compiler.target>
+    </properties>
 	
 	<repositories>
 		<repository>

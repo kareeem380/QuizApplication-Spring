@@ -31,7 +31,7 @@
 		<div class="w3-bar">
 			<h5 class="w3-bar-item"> <b th:text="${question.questionText}">Question text</b></h5>
   			<form class="w3-bar-item w3-right"
-  				sec:authorize = "hasRole('CONTRIBUTOR')"
+  				sec:authorize = "hasRole('ADMINISTRATOR')"
   				th:action="@{/questions/delete}" method="post">
   				<input type="hidden" name="qId" th:value="${question.id}"/>
   				<input type="hidden" name="createdBy" th:value="${question.createdBy.username}"/>
