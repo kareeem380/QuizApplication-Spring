@@ -1,4 +1,4 @@
-package ujfaA.springQuiz.model;
+package ujfaA.springQuiz.entities;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -11,8 +11,8 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
-import ujfaA.springQuiz.model.validator.ValidName;
-import ujfaA.springQuiz.model.validator.ValidPassword;
+import ujfaA.springQuiz.entities.validator.ValidName;
+import ujfaA.springQuiz.entities.validator.ValidPassword;
 
 @NamedNativeQuery(
 name = "User.countCorrectAnswers",

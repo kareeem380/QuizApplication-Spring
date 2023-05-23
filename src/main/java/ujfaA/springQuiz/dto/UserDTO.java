@@ -1,10 +1,9 @@
 package ujfaA.springQuiz.dto;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 
 import lombok.Value;
-import ujfaA.springQuiz.model.Role;
+import ujfaA.springQuiz.entities.Role;
 
 @Value
 public class UserDTO {

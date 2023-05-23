@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.ListCrudRepository;
 
 import ujfaA.springQuiz.dto.UserDTO;
-import ujfaA.springQuiz.model.User;
+import ujfaA.springQuiz.entities.User;
 
 public interface UserRepository extends ListCrudRepository<User, Long> {
 	

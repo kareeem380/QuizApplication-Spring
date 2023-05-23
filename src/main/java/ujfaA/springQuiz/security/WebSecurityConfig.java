@@ -8,7 +8,7 @@ import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import jakarta.servlet.DispatcherType;
-import ujfaA.springQuiz.model.Role;
+import ujfaA.springQuiz.entities.Role;
 
 @Configuration
 public class WebSecurityConfig {

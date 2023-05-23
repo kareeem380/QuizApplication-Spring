@@ -33,13 +33,7 @@
 					<p><input class="w3-btn w3-block w3-green w3-m" type="submit"
 							value="Submit answer" /> </p>
 				</form>
-				<form class=" w3-center w3-padding w3-light-grey"
-					th:action="@{/quiz/skip}" method="post">
-					<input type="hidden" name="qId" th:value="${question.id}" /> <input
-						type="hidden" name="q" th:value="${qIndex}" /> <input
-						class="w3-btn w3-block w3-grey w3-m w3-small" type="submit"
-						value="Skip this question" />
-				</form>
+
 			</div>
 		</div>
 	</div>

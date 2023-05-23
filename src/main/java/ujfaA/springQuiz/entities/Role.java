@@ -1,8 +1,5 @@
-package ujfaA.springQuiz.model;
+package ujfaA.springQuiz.entities;
 
-
-import jakarta.persistence.Column;
-import jakarta.validation.constraints.NotEmpty;
 
 public enum Role {
 

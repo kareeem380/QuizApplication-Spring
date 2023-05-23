@@ -8,7 +8,7 @@
 		<version>3.0.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>ujfaA</groupId>
+	<groupId>quiz</groupId>
 	<artifactId>springQuiz</artifactId>
 	<version>0.2c</version>
 	<name>SpringQuiz</name>

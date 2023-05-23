@@ -1,4 +1,4 @@
-package ujfaA.springQuiz.model.validator;
+package ujfaA.springQuiz.entities.validator;
 
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 

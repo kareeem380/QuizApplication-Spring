@@ -13,7 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-import ujfaA.springQuiz.model.User;
+import ujfaA.springQuiz.entities.User;
 import ujfaA.springQuiz.service.UserService;
 
 @Component

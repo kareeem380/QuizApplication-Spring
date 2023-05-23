@@ -16,7 +16,7 @@
 	 </nav>
 	 <div class="w3-panel w3-padding w3-center">
 	 	<h4 align="center">Create new question</h4>
-		<form th:action="@{/questions/new}" method="get">
+		<!--<form th:action="@{/questions/new}" method="get">
 			
 			<p th:text= "'Number of answers: '"> </p>
 			
@@ -25,7 +25,7 @@
   						th:value="${n}" th:text="${n}" th:selected="${n EQ numberOfAnswers}"></option>
 			</select>
 			<input type="submit" value="Refresh" />
-		</form>
+		</form>-->
 	</div>
 	 <div class="w3-panel" align="center">
 		<form class="w3-container w3-card w3-light-grey" style="width:80%;"
@@ -42,14 +42,12 @@
 					<label th:text="'Correct answer:'"> Correct answer </label>
 				</div>
 				
-				<div th:each="ansCount : ${#numbers.sequence(1, numberOfAnswers)}">
+				<div th:each="ansCount : ${#numbers.sequence(1, 3)}">
 					<div align="left">
 						<label th:for="${#ids.next('answers')}" 
 							th:text="${'Answer ' + ansCount + ':'}">Answer:
 						</label>
-					<!-- Using expression pre-processing, so that "index" variable is resolved before (at a "first pass")
-						 and the Spring EL engine receives a numeric literal when it executes the whole expression: answers[index]
-						 http://forum.thymeleaf.org/How-to-render-Spring-fields-in-a-loop-tp4025542p4025556.html-->
+
 						<label class="w3-text-red" 
 							th:errors="*{answers[__${ansCountStat.index}__]}"> Answer error </label>
 					</div>

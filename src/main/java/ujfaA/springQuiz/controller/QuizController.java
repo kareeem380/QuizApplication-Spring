@@ -52,7 +52,7 @@ public class QuizController {
 		
 		if (qIndex < numberOfQuestions) {			
 			
-			QuestionDTO question = questionService.getQuestionByIndex(qIndex);			
+			QuestionDTO question = questionService.getQuestionByIndex(qIndex);
 			model.addAttribute("question", question);
 			model.addAttribute("qIndex", qIndex);
 			model.addAttribute("numberOfQuestions", numberOfQuestions);

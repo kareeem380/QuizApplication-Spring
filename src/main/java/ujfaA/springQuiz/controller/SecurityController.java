@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import ujfaA.springQuiz.model.Role;
-import ujfaA.springQuiz.model.User;
+import ujfaA.springQuiz.entities.Role;
+import ujfaA.springQuiz.entities.User;
 import ujfaA.springQuiz.service.UserService;
 
 @Controller

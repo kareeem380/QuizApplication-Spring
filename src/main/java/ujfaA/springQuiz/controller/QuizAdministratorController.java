@@ -20,7 +20,7 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ujfaA.springQuiz.dto.QuestionDTO;
-import ujfaA.springQuiz.model.Question;
+import ujfaA.springQuiz.entities.Question;
 import ujfaA.springQuiz.service.QuestionService;
 import ujfaA.springQuiz.service.QuizService;
 import ujfaA.springQuiz.service.UserService;
@@ -142,23 +142,6 @@ public class QuizAdministratorController {
 		return "usersInfo";
 	}
 
-	@GetMapping("/users/usersEng")
-	public String getUserEngagement(@RequestParam(name = "q", defaultValue = "-1") int qIndex,
-									@RequestParam(name = "correctly", defaultValue = "false") boolean correctly,
-									ModelMap model) {
 
-		model.addAttribute("texts", questionService.getQuestionTexts());
-		model.addAttribute("selectedIndex", qIndex);
-		model.addAttribute("checked", correctly);
-		
-		if (qIndex == -1) {
-			model.addAttribute("usernames", userService.getUsernamesThatAnsweredEveryQ(correctly));
-		}
-		else {
-			QuestionDTO q = questionService.getQuestionByIndex(qIndex);
-			model.addAttribute("usernames", userService.getUsernamesThatAnswered(q, correctly));
-		}
-		return"usersEngagement";
-	}
 
 }

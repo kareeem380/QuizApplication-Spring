@@ -1,4 +1,4 @@
-package ujfaA.springQuiz.model;
+package ujfaA.springQuiz.entities;
 
 import java.util.ArrayList;
 import java.util.HashSet;

@@ -4,8 +4,8 @@ package ujfaA.springQuiz.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ujfaA.springQuiz.model.Question;
-import ujfaA.springQuiz.model.User;
+import ujfaA.springQuiz.entities.Question;
+import ujfaA.springQuiz.entities.User;
 
 
 @Service
