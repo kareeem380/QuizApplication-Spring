@@ -54,22 +54,13 @@ public class QuizAdministratorController {
 	@GetMapping("/questions/new")
 	public String newQuestion(
 			@ModelAttribute Question question,
-			@RequestParam(name = "numberOfAnswers", defaultValue = "3") int numberOfAnswers,
 			ModelMap model) {
-		
-		model.addAttribute("numberOfAnswers", numberOfAnswers);
-		model.addAttribute("MAX_ANSWERS", 5);
 		return "newQuestion";
 	}
-	
+
 	@PostMapping("/questions/new")
 	public String addQuestion(@Valid Question question, BindingResult bindingResult, ModelMap model, RedirectAttributes redirectAttrs) {
-		
-		if (bindingResult.hasErrors()) {
-			model.addAttribute("numberOfAnswers", question.getAnswers().size());
-			model.addAttribute("MAX_ANSWERS", 5);
-			return "newQuestion";
-		}
+
 		if (questionService.exist(question)) {
 			redirectAttrs.addAttribute("numberOfAnswers", question.getAnswers().size());			
 			redirectAttrs.addFlashAttribute("message", "A question like this already exist.");
@@ -84,7 +75,7 @@ public class QuizAdministratorController {
 			redirectAttrs.addFlashAttribute(question);
 			return"redirect:/questions/new";
 		}
-		return "redirect:/questions/byMe";
+		return "redirect:/questions";
 	}
 	
 	@GetMapping("/questions/{qId:[0-9]+}")
