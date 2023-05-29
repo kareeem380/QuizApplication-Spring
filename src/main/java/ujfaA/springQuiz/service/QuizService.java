@@ -19,7 +19,6 @@ public class QuizService {
 	
 	
 	public void storeUsersAnswer(String username, long questionId, String answer) {
-		
 		Question question = questionService.getQuestionEntity(questionId);
 		User user = userService.getUser(username);
 		user.storeAnsweredQuestion(question, answer);

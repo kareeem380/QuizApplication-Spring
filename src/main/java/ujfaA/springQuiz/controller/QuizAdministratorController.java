@@ -103,8 +103,8 @@ public class QuizAdministratorController {
 			}
 		}
 		model.addAttribute("question", question);
-		model.addAttribute("answeredPercentage", userService.getAnsweredPercentage(qId));
-		model.addAttribute("answersDistribution", userService.getAnswersDistribution(qId));
+		/*model.addAttribute("answeredPercentage", userService.getAnsweredPercentage(qId));*/
+		/*model.addAttribute("answersDistribution", userService.getAnswersDistribution(qId));*/
 		return "questionStats";
 	}
 
