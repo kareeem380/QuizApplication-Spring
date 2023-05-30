@@ -37,7 +37,6 @@
 						<label th:for="${#ids.next('answers')}" 
 							th:text="${'Answer ' + ansCount + ':'}">Answer:
 						</label>
-
 						<label class="w3-text-red" 
 							th:errors="*{answers[__${ansCountStat.index}__]}"> Answer error </label>
 					</div>

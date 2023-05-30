@@ -1,18 +1,14 @@
 package ujfaA.springQuiz.entities;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import org.hibernate.validator.constraints.UniqueElements;
-
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -49,16 +45,8 @@ public class Question{
 	@Transient
 	private int selectedAnswerIndex;
 
-	@Transient
-	@Getter(value = AccessLevel.NONE)
-	@Setter(value = AccessLevel.NONE)
-	private int hash;
-	@Transient
-	@Getter(value = AccessLevel.NONE)
-	@Setter(value = AccessLevel.NONE)
-	private boolean hashIsZero;
-	
-	
+
+
 	public Question() {
 	}
 	
@@ -66,37 +54,8 @@ public class Question{
 	public String toString() {
 		return questionText;
 	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		
-		if (this == obj)
-			return true;
-		if ( ! (obj instanceof Question))
-			return false;
-		Question otherQ = (Question) obj;
-		if ( ! this.questionText.equals(otherQ.questionText))
-			return false;
-		/* Check if answers are the same - irrelevant of order. */
-		return new HashSet<>(this.answers).equals(new HashSet<>(otherQ.answers));
-	}
 
-	@Override
-	public int hashCode() {
-		
-		int h = hash;
-		if (h == 0 && !hashIsZero) {
-			h = questionText.hashCode();
-			for (String ans : answers) {
-				h += ans.hashCode();
-			}
-			if (h == 0) {
-				hashIsZero = true;
-			} else {
-				hash = h;
-			}
-		}
-		return h;
-	}
+
+
 
 }

@@ -17,11 +17,8 @@ import ujfaA.springQuiz.repository.QuestionRepository;
 @Service
 @Transactional
 public class QuestionService {
-	
 	@Autowired
 	private QuestionRepository questionRepo;
-
-
 	public Set<QuestionDTO> listAll() {
 		return questionRepo.findBy();
 	}
@@ -46,9 +43,7 @@ public class QuestionService {
 		Set<Question> fromDB = questionRepo.findByQuestionText(question.getQuestionText());
 		return fromDB.contains(question);
 	}
-
 	public QuestionDTO getQuestionByIndex(int qIndex) {
-		
 		Pageable pageRequest = PageRequest.of(qIndex, 1);
 		Page<QuestionDTO> page = questionRepo.findByOrderById(pageRequest);
 		if ( ! page.hasContent())

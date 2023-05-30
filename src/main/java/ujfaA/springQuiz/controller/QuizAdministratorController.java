@@ -36,103 +36,30 @@ public class QuizAdministratorController {
 	
 	@Autowired
 	private QuizService quizService;
-	
-	
 	@GetMapping("/questions")
 	public String getQuestions(ModelMap model) {		
 		model.addAttribute("questions", questionService.listAll());
 		return "questions";
 	}
-	
-	/*@GetMapping("/questions/byMe")
-	public String getQuestionsByUser(Principal principal, ModelMap model) {
-		String currentUsername = principal.getName();
-		model.addAttribute("questions", questionService.listAllByUser(currentUsername));
-		return "questions";
-	}*/
-	
 	@GetMapping("/questions/new")
 	public String newQuestion(
 			@ModelAttribute Question question,
 			ModelMap model) {
 		return "newQuestion";
 	}
-
 	@PostMapping("/questions/new")
 	public String addQuestion(@Valid Question question, BindingResult bindingResult, ModelMap model, RedirectAttributes redirectAttrs) {
-
-		if (questionService.exist(question)) {
-			redirectAttrs.addAttribute("numberOfAnswers", question.getAnswers().size());			
-			redirectAttrs.addFlashAttribute("message", "A question like this already exist.");
-			redirectAttrs.addFlashAttribute(question);
-			return"redirect:/questions/new";
-		}
-		try {
-			questionService.save(question);		
-		} catch (Exception e) {
-			redirectAttrs.addAttribute("numberOfAnswers", question.getAnswers().size());			
-			redirectAttrs.addFlashAttribute("message", "There was an error while adding the question.");
-			redirectAttrs.addFlashAttribute(question);
-			return"redirect:/questions/new";
-		}
+			questionService.save(question);
 		return "redirect:/questions";
 	}
-	
-	@GetMapping("/questions/{qId:[0-9]+}")
-	public String getQuestionStats(@PathVariable("qId") long qId, Authentication auth, RedirectAttributes redirectAttrs, ModelMap model) {
-
-		QuestionDTO question = questionService.getQuestion(qId);
-		if (question == null)
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Question not found.");
-		
-		if (auth.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_CONTRIBUTOR")) ) {
-			
-			String author = question.getCreatedBy().getUsername();			
-			if ( ! auth.getName().equals(author)) {
-				redirectAttrs.addFlashAttribute("message","You don't have the required permission to see the question's stats.");
-				return "redirect:/questions/byMe";
-			}
-		}
-		model.addAttribute("question", question);
-		/*model.addAttribute("answeredPercentage", userService.getAnsweredPercentage(qId));*/
-		/*model.addAttribute("answersDistribution", userService.getAnswersDistribution(qId));*/
-		return "questionStats";
-	}
-
 	@PostMapping("/questions/delete")
-	public String removeQuestion(@RequestParam long qId, Authentication auth, RedirectAttributes redirectAttrs) {
-		
-		String redirectModifier = "";
-
-		if (auth.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_CONTRIBUTOR")) ) {
-
-			QuestionDTO q = questionService.getQuestion(qId);
-			String author = q.getCreatedBy().getUsername();
-			if ( ! auth.getName().equals(author)) {
-				redirectAttrs.addFlashAttribute("message", "You don't have the required permission to delete the question.");
-				return "redirect:/questions/byMe";
-			}
-			
-			redirectModifier = "/byMe";
-		}
-		
-		String message;
-		try {
+	public String removeQuestion(@RequestParam long qId) {
 			quizService.removeQuestion(qId);
-			message = "The question has been removed.";
-		} catch (Exception e) {
-			message = "There had been an error while trying to remove the question.";
-		}
-		redirectAttrs.addFlashAttribute("message", message);
-		return "redirect:/questions" + redirectModifier;
+		return "redirect:/questions" ;
 	}
-
 	@GetMapping("/users")
 	public String getUsersInfo(ModelMap model) {
 		model.addAttribute("users", userService.getUsersInfo());
 		return "usersInfo";
 	}
-
-
-
 }
