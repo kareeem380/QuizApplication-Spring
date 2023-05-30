@@ -50,8 +50,7 @@ public class QuizController {
 		
 		int numberOfQuestions = questionService.getNumberOfQuestions();
 		
-		if (qIndex < numberOfQuestions) {			
-			
+		if (qIndex < numberOfQuestions) {
 			QuestionDTO question = questionService.getQuestionByIndex(qIndex);
 			model.addAttribute("question", question);
 			model.addAttribute("qIndex", qIndex);
@@ -81,7 +80,7 @@ public class QuizController {
 		return "redirect:/quiz/show?q=" + (qIndex + 1);
 	}
 
-	@PostMapping("/quiz/skip")
+	/*@PostMapping("/quiz/skip")
 	public String skip(	Principal principal,
 						@RequestParam(name = "qId") long questionId,
 						@RequestParam(name = "q") int qIndex,
@@ -90,7 +89,7 @@ public class QuizController {
 		String username = principal.getName();
 		quizService.storeUsersAnswer(username, questionId, "");
 		return "redirect:/quiz/show?q=" + (qIndex + 1);
-	}
+	}*/
 
 	@GetMapping("/quiz/completed")
 	public String onCompletion(Principal principal, ModelMap model) {

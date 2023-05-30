@@ -7,17 +7,17 @@
 	<title> Spring Quiz - Home</title>
 </head>
 <body>
-	<header 
-		th:replace="~{fragments/HeaderAndFooter :: header}">
-	</header>
+<header class="w3-container" style="background-color: #5edce36e;">
+	<img  th:src="@{/images/quizapp.png}" alt="Quiz Application" style="height: 100px; width: 100px; display: block; margin: 10px auto;">
+</header>
 	<nav
 	 	th:replace="~{fragments/Navigation :: topBar}" >
 	 </nav>
 	<div class="w3-container w3-padding-large" align="center">
 		<h2 th:text = "${'Welcome ' + session.userFirstName}"> </h2>
 	</div>
-	<div class="w3-container w3-padding-large" align="center">
-		<a th:href="@{/quiz/start}" class="w3-btn w3-large w3-red">Start Quiz</a>
+	<div class="w3-container w3-padding-large " align="center">
+		<a th:href="@{/quiz/start}" class="w3-btn w3-large " style="background-color: #a88ef3">Start Quiz</a>
 	</div>
 	<footer
 		th:replace="~{fragments/HeaderAndFooter :: footer}">

@@ -44,12 +44,12 @@ public class QuizAdministratorController {
 		return "questions";
 	}
 	
-	@GetMapping("/questions/byMe")
+	/*@GetMapping("/questions/byMe")
 	public String getQuestionsByUser(Principal principal, ModelMap model) {
 		String currentUsername = principal.getName();
 		model.addAttribute("questions", questionService.listAllByUser(currentUsername));
 		return "questions";
-	}
+	}*/
 	
 	@GetMapping("/questions/new")
 	public String newQuestion(
@@ -94,8 +94,8 @@ public class QuizAdministratorController {
 			}
 		}
 		model.addAttribute("question", question);
-		model.addAttribute("answeredPercentage", userService.getAnsweredPercentage(qId));
-		model.addAttribute("answersDistribution", userService.getAnswersDistribution(qId));
+		/*model.addAttribute("answeredPercentage", userService.getAnsweredPercentage(qId));*/
+		/*model.addAttribute("answersDistribution", userService.getAnswersDistribution(qId));*/
 		return "questionStats";
 	}
 

@@ -27,7 +27,6 @@ public class SecurityController {
 	public String registration(ModelMap model) {
 		User user = new User();
 		/*default role is administrator*/
-		user.setRole(Role.ADMINISTRATOR);
 	    model.addAttribute(user);
 	    return "registration";
 	}

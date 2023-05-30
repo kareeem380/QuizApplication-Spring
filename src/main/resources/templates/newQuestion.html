@@ -16,16 +16,6 @@
 	 </nav>
 	 <div class="w3-panel w3-padding w3-center">
 	 	<h4 align="center">Create new question</h4>
-		<!--<form th:action="@{/questions/new}" method="get">
-			
-			<p th:text= "'Number of answers: '"> </p>
-			
-			<select name="numberOfAnswers">
-  				<option th:each="n : ${#numbers.sequence(2, MAX_ANSWERS)}" 
-  						th:value="${n}" th:text="${n}" th:selected="${n EQ numberOfAnswers}"></option>
-			</select>
-			<input type="submit" value="Refresh" />
-		</form>-->
 	</div>
 	 <div class="w3-panel" align="center">
 		<form class="w3-container w3-card w3-light-grey" style="width:80%;"
@@ -65,10 +55,10 @@
   					</div>
 				</div>
 				<label class="w3-text-red" th:errors="*{answers}"> Answers error </label>
-				<p>
-					<input class="w3-btn w3-block w3-green w3-m"
-					type="submit" value="Add question" />
-				</p>
+			<p>
+				<input class="w3-btn w3-block w3-m" style="background-color: #a88ef3;" type="submit" value="Add question" />
+			</p>
+
 		</form>
 	</div>
 	<p align="center" th:text="${message}"></p>
