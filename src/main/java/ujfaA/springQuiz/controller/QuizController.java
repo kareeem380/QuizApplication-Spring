@@ -80,21 +80,12 @@ public class QuizController {
 		return "redirect:/quiz/show?q=" + (qIndex + 1);
 	}
 
-	/*@PostMapping("/quiz/skip")
-	public String skip(	Principal principal,
-						@RequestParam(name = "qId") long questionId,
-						@RequestParam(name = "q") int qIndex,
-						RedirectAttributes redirectAttributes) {
-
-		String username = principal.getName();
-		quizService.storeUsersAnswer(username, questionId, "");
-		return "redirect:/quiz/show?q=" + (qIndex + 1);
-	}*/
-
 	@GetMapping("/quiz/completed")
 	public String onCompletion(Principal principal, ModelMap model) {
+		int numberOfQuestions = questionService.getNumberOfQuestions();
 		String username = principal.getName();
 		model.addAttribute("score", quizService.getUserScore(username));
+		model.addAttribute("numberOfQuestions", numberOfQuestions);
 		return "completion";
 	}
 }

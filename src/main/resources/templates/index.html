@@ -19,6 +19,9 @@
 	<div class="w3-container w3-padding-large " align="center">
 		<a th:href="@{/quiz/start}" class="w3-btn w3-large " style="background-color: #a88ef3">Start Quiz</a>
 	</div>
+<div class="message" align="center">
+	<p th:text="${message}"></p>
+</div>
 	<footer
 		th:replace="~{fragments/HeaderAndFooter :: footer}">
 	</footer>

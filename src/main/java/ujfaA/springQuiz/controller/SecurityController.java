@@ -21,52 +21,30 @@ public class SecurityController {
 	
 	@Autowired
 	private UserService userService;
-	
-	
 	@GetMapping("/registration")
 	public String registration(ModelMap model) {
 		User user = new User();
-		/*default role is administrator*/
 	    model.addAttribute(user);
 	    return "registration";
 	}
-		
 	@PostMapping("/registration")
-	public String addNewUser( @Valid @ModelAttribute("user") User newUser, BindingResult bindingResult,
+	public String addNewUser( @Valid @ModelAttribute("user") User newUser,
 							ModelMap model, RedirectAttributes redirectAttributes) {
-
-// TODO auto login when previously logged in  // Cannot perform login for 'admin2', already authenticated as 'user'
-//			request.login(newUser.getUsername(), newUser.getPassword());
-		
-		if (bindingResult.hasErrors()) {
-			return "registration";
-		}
-		
-		if ( ! userService.usernameIsAvaible(newUser.getUsername()) ) {
-			model.addAttribute("user", newUser);
-			model.addAttribute("message", "The username isn't available.\nPlease pick another one.");
-			return "registration";
-		}
-		if ( ! userService.emailIsAvaible(newUser.getEmail()) ) {
-			model.addAttribute("user", newUser);
-			model.addAttribute("message", "The email is already registered.\nPlease pick another one.");
-			return "registration";
-		}
 		try {
 			userService.register(newUser);
-			redirectAttributes.addFlashAttribute("message", "You created a new account.");
-			return "redirect:/login";
+			redirectAttributes.addFlashAttribute("message", "Compte ajouté");
+			return "redirect:/home";
 		} catch (Exception e) {
 			model.addAttribute("user", newUser);
-			model.addAttribute("message", "There was an error while trying to register this account.");
+			model.addAttribute("message", "There is error");
 			return "registration";
+
 		}
 	}
-	
 	@GetMapping("/login")
 	public String login(@RequestParam(defaultValue = "false") boolean error, ModelMap model) {
 		if (error == true)
-			model.addAttribute("message", "Wrong username or password.");
+			model.addAttribute("message", "Mdp incorrect");
 		return "login";
 	}
 	

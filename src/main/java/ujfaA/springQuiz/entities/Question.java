@@ -31,37 +31,32 @@ public class Question{
 	@ManyToOne(targetEntity = User.class, optional = false)
 	@JoinColumn(name="created_by_user", referencedColumnName = "user_id", nullable = false)
 	private User createdBy;
-	
-	/* validation */
+
 	@NotBlank
-	//
 	@Column(nullable = false)
 	private String questionText;
 	
 	@Column(nullable = false)
 	private String correctAnswer;
-	
-	/* validation */
 	@NotEmpty()
-	@UniqueElements(message = "Each answer has to be different.")
-	//
+	@UniqueElements(message = "Questions kif-kif ")
 	@ElementCollection(fetch = FetchType.LAZY)
 	@CollectionTable(name = "answers", joinColumns = @JoinColumn(name = "question_id", referencedColumnName = "question_id"))
 	@OrderColumn(name = "ordinal", columnDefinition = "tinyint") 
 	@Column(name = "answer", nullable = false)
-	private List<@NotBlank String> answers = new ArrayList<String>();	// Includes the correctAnswer.
+	private List<@NotBlank String> answers = new ArrayList<String>();
 
 	@Transient
-	private int selectedAnswerIndex;	// Used in a form when user create a question.
+	private int selectedAnswerIndex;
 
 	@Transient
 	@Getter(value = AccessLevel.NONE)
 	@Setter(value = AccessLevel.NONE)
-	private int hash; // Default to 0
+	private int hash;
 	@Transient
 	@Getter(value = AccessLevel.NONE)
 	@Setter(value = AccessLevel.NONE)
-	private boolean hashIsZero; // Default to false;
+	private boolean hashIsZero;
 	
 	
 	public Question() {
